@@ -22,6 +22,11 @@ class account():
              print("Not Enough Balance")
         else: 
             self.balance = balance
-      
+    def deposit(self,amount):
+         balance = self.balance + amount
+         self.balance = balance
+
+         
 bn = account(2165454, 'Saviing', 5000)
-bn.withdraw(10000)
+bn.deposit(10000)
+bn.display()
