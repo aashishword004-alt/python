@@ -1,17 +1,28 @@
 import asyncio
 import time
+''' Sync
+def fetch_data(task):
+    print(f"task {task} started")
+    time.sleep(2)
+    print(f"task {task} completed")
+'''
+#Async 
 
-# Sync Method
-def greet():
-    print('hello world')
-    time.sleep(3)
-    print('hello world 2')
+async def fetch_data(task):
+    print(f'Task {task} Started')
+    await asyncio.sleep(2)
+    print(f'Task {task} Completed')
 
-async def plug():
-    start = time.time()
-    print('This is Secoud Function ')
-    await asyncio.sleep(3)
-    print('And This part After the Await')     
-    end = time.time()
-asyncio.run(plug())
-greet()
+async def main():
+
+ start = time.time()
+ await asyncio.gather(
+ fetch_data(1),
+ fetch_data(2),
+ fetch_data(3))
+ end = time.time()
+ print('Total time : ' ,round(end - start,2))
+
+
+asyncio.run(main())
+#print('Total time : ' ,(end - start,2))
